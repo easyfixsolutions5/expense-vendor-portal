@@ -1,119 +1,76 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>EasyFix - Expenses & Vendors</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyFix Solutions Portal</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>EasyFix - Expenses & Vendors Portal</h1>
-    <p class="subtitle">Store expenses & vendor details (localStorage)</p>
-  </header>
+    <header>
+        <img src="assets/logo.png" alt="Logo" class="logo">
+        <h1>EasyFix Solutions Portal</h1>
+    </header>
 
-  <nav class="tabs">
-    <button id="tab-expenses" class="active">Expenses</button>
-    <button id="tab-vendors">Vendors</button>
-  </nav>
+    <nav>
+        <button class="tab-btn" onclick="openTab('expenses')">Expenses</button>
+        <button class="tab-btn" onclick="openTab('clients')">Clients</button>
+        <button class="tab-btn" onclick="openTab('vendors')">Vendors</button>
+        <button class="tab-btn" onclick="openTab('contractors')">Contractors</button>
+    </nav>
 
-  <main>
-    <!-- Expenses Section -->
-    <section id="section-expenses" class="section active">
-      <div class="form-card">
-        <h2 id="expense-form-title">Add Expense</h2>
-        <form id="expense-form">
-          <input type="hidden" id="expense-id" />
-          <label>Date
-            <input type="date" id="expense-date" required />
-          </label>
-          <label>Vendor
-            <select id="expense-vendor">
-              <option value="">-- Select vendor (or enter name) --</option>
-            </select>
-            <input type="text" id="expense-vendor-free" placeholder="Or type vendor name" />
-          </label>
-          <label>Category
-            <input type="text" id="expense-category" placeholder="e.g., Repair, Salary" />
-          </label>
-          <label>Amount (INR)
-            <input type="number" id="expense-amount" step="0.01" min="0" required />
-          </label>
-          <label>Description
-            <textarea id="expense-desc" rows="2" placeholder="Short description"></textarea>
-          </label>
-          <div class="form-actions">
-            <button type="submit" id="expense-save">Save</button>
-            <button type="button" id="expense-cancel" class="muted">Cancel</button>
-          </div>
-        </form>
-      </div>
+    <main>
+        <section id="expenses" class="tab-content">
+            <h2>Daily Expenses</h2>
+            <form id="expense-form">
+                <input type="text" placeholder="Expense Name" required>
+                <input type="number" placeholder="Amount" required>
+                <button type="submit">Add Expense</button>
+            </form>
+            <ul id="expense-list"></ul>
+        </section>
 
-      <div class="table-card">
-        <div class="table-actions">
-          <button id="export-expenses">Export CSV</button>
-          <button id="clear-expenses" class="danger">Clear All Expenses</button>
-        </div>
-        <table id="expenses-table">
-          <thead>
-            <tr><th>Date</th><th>Vendor</th><th>Category</th><th>Description</th><th>Amount (INR)</th><th>Actions</th></tr>
-          </thead>
-          <tbody></tbody>
-          <tfoot>
-            <tr>
-              <td colspan="4">Total</td>
-              <td id="expenses-total">0.00</td>
-              <td></td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-    </section>
+        <section id="clients" class="tab-content">
+            <h2>Clients</h2>
+            <form id="client-form">
+                <input type="text" placeholder="Client Name" required>
+                <input type="text" placeholder="Address" required>
+                <input type="text" placeholder="Phone Number" required>
+                <input type="text" placeholder="Work Description" required>
+                <select>
+                    <option value="in-progress">In Progress</option>
+                    <option value="completed">Completed</option>
+                </select>
+                <button type="submit">Add Client</button>
+            </form>
+            <ul id="client-list"></ul>
+        </section>
 
-    <!-- Vendors Section -->
-    <section id="section-vendors" class="section">
-      <div class="form-card">
-        <h2 id="vendor-form-title">Add Vendor</h2>
-        <form id="vendor-form">
-          <input type="hidden" id="vendor-id" />
-          <label>Vendor Name
-            <input type="text" id="vendor-name" required />
-          </label>
-          <label>Contact Number
-            <input type="tel" id="vendor-contact" />
-          </label>
-          <label>Service / Category
-            <input type="text" id="vendor-service" />
-          </label>
-          <label>Email
-            <input type="email" id="vendor-email" />
-          </label>
-          <div class="form-actions">
-            <button type="submit" id="vendor-save">Save Vendor</button>
-            <button type="button" id="vendor-cancel" class="muted">Cancel</button>
-          </div>
-        </form>
-      </div>
+        <section id="vendors" class="tab-content">
+            <h2>Vendors</h2>
+            <form id="vendor-form">
+                <input type="text" placeholder="Vendor Name" required>
+                <input type="text" placeholder="Address" required>
+                <input type="text" placeholder="Phone Number" required>
+                <input type="text" placeholder="Service Type (Plumber, Electrician...)" required>
+                <button type="submit">Add Vendor</button>
+            </form>
+            <ul id="vendor-list"></ul>
+        </section>
 
-      <div class="table-card">
-        <div class="table-actions">
-          <button id="export-vendors">Export Vendors CSV</button>
-          <button id="clear-vendors" class="danger">Clear All Vendors</button>
-        </div>
-        <table id="vendors-table">
-          <thead>
-            <tr><th>Name</th><th>Contact</th><th>Service</th><th>Email</th><th>Actions</th></tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </section>
-  </main>
+        <section id="contractors" class="tab-content">
+            <h2>Contractors</h2>
+            <form id="contractor-form">
+                <input type="text" placeholder="Contractor Name" required>
+                <input type="text" placeholder="Address" required>
+                <input type="text" placeholder="Phone Number" required>
+                <input type="text" placeholder="Service Type" required>
+                <button type="submit">Add Contractor</button>
+            </form>
+            <ul id="contractor-list"></ul>
+        </section>
+    </main>
 
-  <footer>
-    <small>EasyFix Solutions • <a href="https://easyfixsolutions.in" target="_blank">easyfixsolutions.in</a></small>
-  </footer>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
