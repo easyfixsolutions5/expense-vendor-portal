@@ -4,17 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EasyFix Solutions Expenses & Vendor Portal</title>
-  <!-- Corrected line -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
-    <img src="assets/logo.png" alt="Logo" class="logo">
-    <h1>EasyFix Solutions Portal</h1>
+    <div class="header-content">
+      <img src="assets/logo.png" alt="Logo" class="logo">
+      <h1>EasyFix Solutions Portal</h1>
+    </div>
   </header>
 
   <nav>
-    <button class="tab-btn" onclick="openTab('expenses')">Expenses</button>
+    <button class="tab-btn active" onclick="openTab('expenses')">Expenses</button>
     <button class="tab-btn" onclick="openTab('clients')">Clients</button>
     <button class="tab-btn" onclick="openTab('vendors')">Vendors</button>
     <button class="tab-btn" onclick="openTab('contractors')">Contractors</button>
@@ -22,15 +23,21 @@
 
   <main>
     <!-- Expenses -->
-    <section id="expenses" class="tab-content">
+    <section id="expenses" class="tab-content active">
       <div class="section-header">
         <h2>Daily Expenses</h2>
         <button onclick="exportData('expenses')">Export</button>
       </div>
       <form id="expense-form">
-        <input type="text" placeholder="Expense Name" required>
-        <input type="number" placeholder="Amount" required>
-        <button type="submit">Add Expense</button>
+        <div class="form-group">
+          <label for="expenseName">Expense Name:</label>
+          <input type="text" id="expenseName" placeholder="Enter Expense Name" required>
+        </div>
+        <div class="form-group">
+          <label for="expenseAmount">Amount:</label>
+          <input type="number" id="expenseAmount" placeholder="Enter Amount" required>
+        </div>
+        <button type="submit" class="add-btn">Add Expense</button>
       </form>
       <ul id="expense-list"></ul>
     </section>
@@ -42,15 +49,30 @@
         <button onclick="exportData('clients')">Export</button>
       </div>
       <form id="client-form">
-        <input type="text" placeholder="Client Name" required>
-        <input type="text" placeholder="Address" required>
-        <input type="text" placeholder="Phone Number" required>
-        <input type="text" placeholder="Work Description" required>
-        <select>
-          <option value="in-progress">In Progress</option>
-          <option value="completed">Completed</option>
-        </select>
-        <button type="submit">Add Client</button>
+        <div class="form-group">
+          <label for="clientName">Client Name:</label>
+          <input type="text" id="clientName" placeholder="Enter Client Name" required>
+        </div>
+        <div class="form-group">
+          <label for="clientAddress">Address:</label>
+          <input type="text" id="clientAddress" placeholder="Enter Address" required>
+        </div>
+        <div class="form-group">
+          <label for="clientPhone">Phone Number:</label>
+          <input type="text" id="clientPhone" placeholder="Enter Phone Number" required>
+        </div>
+        <div class="form-group">
+          <label for="clientWorkDesc">Work Description:</label>
+          <input type="text" id="clientWorkDesc" placeholder="Enter Work Description" required>
+        </div>
+        <div class="form-group">
+          <label for="clientStatus">Status:</label>
+          <select id="clientStatus">
+            <option value="in-progress">In Progress</option>
+            <option value="completed">Completed</option>
+          </select>
+        </div>
+        <button type="submit" class="add-btn">Add Client</button>
       </form>
       <ul id="client-list"></ul>
     </section>
@@ -62,11 +84,23 @@
         <button onclick="exportData('vendors')">Export</button>
       </div>
       <form id="vendor-form">
-        <input type="text" placeholder="Vendor Name" required>
-        <input type="text" placeholder="Address" required>
-        <input type="text" placeholder="Phone Number" required>
-        <input type="text" placeholder="Service Type" required>
-        <button type="submit">Add Vendor</button>
+        <div class="form-group">
+          <label for="vendorName">Vendor Name:</label>
+          <input type="text" id="vendorName" placeholder="Enter Vendor Name" required>
+        </div>
+        <div class="form-group">
+          <label for="vendorAddress">Address:</label>
+          <input type="text" id="vendorAddress" placeholder="Enter Address" required>
+        </div>
+        <div class="form-group">
+          <label for="vendorPhone">Phone Number:</label>
+          <input type="text" id="vendorPhone" placeholder="Enter Phone Number" required>
+        </div>
+        <div class="form-group">
+          <label for="vendorService">Service Type:</label>
+          <input type="text" id="vendorService" placeholder="Enter Service Type" required>
+        </div>
+        <button type="submit" class="add-btn">Add Vendor</button>
       </form>
       <ul id="vendor-list"></ul>
     </section>
@@ -78,11 +112,23 @@
         <button onclick="exportData('contractors')">Export</button>
       </div>
       <form id="contractor-form">
-        <input type="text" placeholder="Contractor Name" required>
-        <input type="text" placeholder="Address" required>
-        <input type="text" placeholder="Phone Number" required>
-        <input type="text" placeholder="Service Type" required>
-        <button type="submit">Add Contractor</button>
+        <div class="form-group">
+          <label for="contractorName">Contractor Name:</label>
+          <input type="text" id="contractorName" placeholder="Enter Contractor Name" required>
+        </div>
+        <div class="form-group">
+          <label for="contractorAddress">Address:</label>
+          <input type="text" id="contractorAddress" placeholder="Enter Address" required>
+        </div>
+        <div class="form-group">
+          <label for="contractorPhone">Phone Number:</label>
+          <input type="text" id="contractorPhone" placeholder="Enter Phone Number" required>
+        </div>
+        <div class="form-group">
+          <label for="contractorService">Service Type:</label>
+          <input type="text" id="contractorService" placeholder="Enter Service Type" required>
+        </div>
+        <button type="submit" class="add-btn">Add Contractor</button>
       </form>
       <ul id="contractor-list"></ul>
     </section>
