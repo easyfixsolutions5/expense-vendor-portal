@@ -1,98 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Details Form</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
-        }
-        .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            max-width: 600px; /* कंटेनर की चौड़ाई सीमित करें */
-            margin: auto; /* पेज के बीच में लाने के लिए */
-        }
-        .form-group {
-            margin-bottom: 15px; /* प्रत्येक फ़ील्ड-सेट के बीच स्पेस */
-            display: flex; /* फ़्लेक्सबॉक्स का उपयोग करें */
-            flex-direction: column; /* आइटम्स को कॉलम में व्यवस्थित करें */
-        }
-        .form-group label {
-            font-weight: bold;
-            margin-bottom: 5px; /* लेबल और वैल्यू के बीच थोड़ा स्पेस */
-        }
-        /* यह स्टाइल इनपुट फील्ड के लिए है, यदि आप डेटा को संपादन योग्य रखना चाहते हैं */
-        .form-group input {
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            width: 100%;
-            box-sizing: border-box; /* पैडिंग और बॉर्डर को चौड़ाई में शामिल करने के लिए */
-        }
-        /* यह स्टाइल केवल डिस्प्ले के लिए है यदि आप इनपुट फील्ड का उपयोग नहीं कर रहे हैं */
-        .form-group .display-value {
-            padding: 8px;
-            background-color: #e9e9e9;
-            border-radius: 4px;
-        }
-        .delete-button {
-            background-color: #dc3545;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 20px;
-        }
-        .delete-button:hover {
-            background-color: #c82333;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EasyFix Solutions Expenses & Vendor Portal</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <div class="container">
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <!-- यदि आप डेटा को संपादन योग्य इनपुट फील्ड में दिखाना चाहते हैं -->
-            <input type="text" id="name" value="Ashu">
-            <!-- या यदि आप केवल डिस्प्ले के लिए दिखाना चाहते हैं -->
-            <!-- <span class="display-value">Ashu</span> -->
-        </div>
-
-        <div class="form-group">
-            <label for="address">Address:</label>
-            <input type="text" id="address" value="Noida">
-            <!-- <span class="display-value">Noida</span> -->
-        </div>
-
-        <div class="form-group">
-            <label for="phone">Phone:</label>
-            <input type="text" id="phone" value="1234567890">
-            <!-- <span class="display-value">1234567890</span> -->
-        </div>
-
-        <div class="form-group">
-            <label for="work">Work:</label>
-            <input type="text" id="work" value="Software Engineer">
-            <!-- <span class="display-value">Software Engineer</span> -->
-        </div>
-
-        <div class="form-group">
-            <label for="status">Status:</label>
-            <input type="text" id="status" value="in-progress">
-            <!-- <span class="display-value">in-progress</span> -->
-        </div>
-
-        <button class="delete-button">Delete</button>
+  <header>
+    <div class="header-content">
+      <img src="assets/logo.png" alt="Logo" class="logo">
+      <h1>EasyFix Solutions Portal</h1>
     </div>
+  </header>
 
+  <nav>
+    <button class="tab-btn active" onclick="openTab('expenses')">Expenses</button>
+    <button class="tab-btn" onclick="openTab('clients')">Clients</button>
+    <button class="tab-btn" onclick="openTab('vendors')">Vendors</button>
+    <button class="tab-btn" onclick="openTab('contractors')">Contractors</button>
+  </nav>
+
+  <main>
+    <!-- Expenses -->
+    <section id="expenses" class="tab-content active">
+      <div class="section-header">
+        <h2>Daily Expenses</h2>
+        <button onclick="exportData('expenses')">Export</button>
+      </div>
+      <form id="expense-form">
+        <div class="form-group">
+          <label for="expenseName">Expense Name:</label>
+          <input type="text" id="expenseName" placeholder="Enter Expense Name" required>
+        </div>
+        <div class="form-group">
+          <label for="expenseAmount">Amount:</label>
+          <input type="number" id="expenseAmount" placeholder="Enter Amount" required>
+        </div>
+        <button type="submit" class="add-btn">Add Expense</button>
+      </form>
+      <ul id="expense-list"></ul>
+    </section>
+
+    <!-- Clients -->
+    <section id="clients" class="tab-content">
+      <div class="section-header">
+        <h2>Clients</h2>
+        <button onclick="exportData('clients')">Export</button>
+      </div>
+      <form id="client-form">
+        <div class="form-group">
+          <label for="clientName">Client Name:</label>
+          <input type="text" id="clientName" placeholder="Enter Client Name" required>
+        </div>
+        <div class="form-group">
+          <label for="clientAddress">Address:</label>
+          <input type="text" id="clientAddress" placeholder="Enter Address" required>
+        </div>
+        <div class="form-group">
+          <label for="clientPhone">Phone Number:</label>
+          <input type="text" id="clientPhone" placeholder="Enter Phone Number" required>
+        </div>
+        <div class="form-group">
+          <label for="clientWorkDesc">Work Description:</label>
+          <input type="text" id="clientWorkDesc" placeholder="Enter Work Description" required>
+        </div>
+        <div class="form-group">
+          <label for="clientStatus">Status:</label>
+          <select id="clientStatus">
+            <option value="in-progress">In Progress</option>
+            <option value="completed">Completed</option>
+          </select>
+        </div>
+        <button type="submit" class="add-btn">Add Client</button>
+      </form>
+      <ul id="client-list"></ul>
+    </section>
+
+    <!-- Vendors -->
+    <section id="vendors" class="tab-content">
+      <div class="section-header">
+        <h2>Vendors</h2>
+        <button onclick="exportData('vendors')">Export</button>
+      </div>
+      <form id="vendor-form">
+        <div class="form-group">
+          <label for="vendorName">Vendor Name:</label>
+          <input type="text" id="vendorName" placeholder="Enter Vendor Name" required>
+        </div>
+        <div class="form-group">
+          <label for="vendorAddress">Address:</label>
+          <input type="text" id="vendorAddress" placeholder="Enter Address" required>
+        </div>
+        <div class="form-group">
+          <label for="vendorPhone">Phone Number:</label>
+          <input type="text" id="vendorPhone" placeholder="Enter Phone Number" required>
+        </div>
+        <div class="form-group">
+          <label for="vendorService">Service Type:</label>
+          <input type="text" id="vendorService" placeholder="Enter Service Type" required>
+        </div>
+        <button type="submit" class="add-btn">Add Vendor</button>
+      </form>
+      <ul id="vendor-list"></ul>
+    </section>
+
+    <!-- Contractors -->
+    <section id="contractors" class="tab-content">
+      <div class="section-header">
+        <h2>Contractors</h2>
+        <button onclick="exportData('contractors')">Export</button>
+      </div>
+      <form id="contractor-form">
+        <div class="form-group">
+          <label for="contractorName">Contractor Name:</label>
+          <input type="text" id="contractorName" placeholder="Enter Contractor Name" required>
+        </div>
+        <div class="form-group">
+          <label for="contractorAddress">Address:</label>
+          <input type="text" id="contractorAddress" placeholder="Enter Address" required>
+        </div>
+        <div class="form-group">
+          <label for="contractorPhone">Phone Number:</label>
+          <input type="text" id="contractorPhone" placeholder="Enter Phone Number" required>
+        </div>
+        <div class="form-group">
+          <label for="contractorService">Service Type:</label>
+          <input type="text" id="contractorService" placeholder="Enter Service Type" required>
+        </div>
+        <button type="submit" class="add-btn">Add Contractor</button>
+      </form>
+      <ul id="contractor-list"></ul>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
+
