@@ -1,76 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EasyFix Solutions Portal</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EasyFix Solutions Expenses & Vendor Portal</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <img src="assets/logo.png" alt="Logo" class="logo">
-        <h1>EasyFix Solutions Portal</h1>
-    </header>
+  <header>
+    <img src="assets/logo.png" alt="Logo" class="logo">
+    <h1>EasyFix Solutions Portal</h1>
+  </header>
 
-    <nav>
-        <button class="tab-btn" onclick="openTab('expenses')">Expenses</button>
-        <button class="tab-btn" onclick="openTab('clients')">Clients</button>
-        <button class="tab-btn" onclick="openTab('vendors')">Vendors</button>
-        <button class="tab-btn" onclick="openTab('contractors')">Contractors</button>
-    </nav>
+  <nav>
+    <button class="tab-btn" onclick="openTab('expenses')">Expenses</button>
+    <button class="tab-btn" onclick="openTab('clients')">Clients</button>
+    <button class="tab-btn" onclick="openTab('vendors')">Vendors</button>
+    <button class="tab-btn" onclick="openTab('contractors')">Contractors</button>
+  </nav>
 
-    <main>
-        <section id="expenses" class="tab-content">
-            <h2>Daily Expenses</h2>
-            <form id="expense-form">
-                <input type="text" placeholder="Expense Name" required>
-                <input type="number" placeholder="Amount" required>
-                <button type="submit">Add Expense</button>
-            </form>
-            <ul id="expense-list"></ul>
-        </section>
+  <main>
+    <!-- Expenses -->
+    <section id="expenses" class="tab-content">
+      <div class="section-header">
+        <h2>Daily Expenses</h2>
+        <button onclick="exportData('expenses')">Export</button>
+      </div>
+      <form id="expense-form">
+        <input type="text" placeholder="Expense Name" required>
+        <input type="number" placeholder="Amount" required>
+        <button type="submit">Add Expense</button>
+      </form>
+      <ul id="expense-list"></ul>
+    </section>
 
-        <section id="clients" class="tab-content">
-            <h2>Clients</h2>
-            <form id="client-form">
-                <input type="text" placeholder="Client Name" required>
-                <input type="text" placeholder="Address" required>
-                <input type="text" placeholder="Phone Number" required>
-                <input type="text" placeholder="Work Description" required>
-                <select>
-                    <option value="in-progress">In Progress</option>
-                    <option value="completed">Completed</option>
-                </select>
-                <button type="submit">Add Client</button>
-            </form>
-            <ul id="client-list"></ul>
-        </section>
+    <!-- Clients -->
+    <section id="clients" class="tab-content">
+      <div class="section-header">
+        <h2>Clients</h2>
+        <button onclick="exportData('clients')">Export</button>
+      </div>
+      <form id="client-form">
+        <input type="text" placeholder="Client Name" required>
+        <input type="text" placeholder="Address" required>
+        <input type="text" placeholder="Phone Number" required>
+        <input type="text" placeholder="Work Description" required>
+        <select>
+          <option value="in-progress">In Progress</option>
+          <option value="completed">Completed</option>
+        </select>
+        <button type="submit">Add Client</button>
+      </form>
+      <ul id="client-list"></ul>
+    </section>
 
-        <section id="vendors" class="tab-content">
-            <h2>Vendors</h2>
-            <form id="vendor-form">
-                <input type="text" placeholder="Vendor Name" required>
-                <input type="text" placeholder="Address" required>
-                <input type="text" placeholder="Phone Number" required>
-                <input type="text" placeholder="Service Type (Plumber, Electrician...)" required>
-                <button type="submit">Add Vendor</button>
-            </form>
-            <ul id="vendor-list"></ul>
-        </section>
+    <!-- Vendors -->
+    <section id="vendors" class="tab-content">
+      <div class="section-header">
+        <h2>Vendors</h2>
+        <button onclick="exportData('vendors')">Export</button>
+      </div>
+      <form id="vendor-form">
+        <input type="text" placeholder="Vendor Name" required>
+        <input type="text" placeholder="Address" required>
+        <input type="text" placeholder="Phone Number" required>
+        <input type="text" placeholder="Service Type" required>
+        <button type="submit">Add Vendor</button>
+      </form>
+      <ul id="vendor-list"></ul>
+    </section>
 
-        <section id="contractors" class="tab-content">
-            <h2>Contractors</h2>
-            <form id="contractor-form">
-                <input type="text" placeholder="Contractor Name" required>
-                <input type="text" placeholder="Address" required>
-                <input type="text" placeholder="Phone Number" required>
-                <input type="text" placeholder="Service Type" required>
-                <button type="submit">Add Contractor</button>
-            </form>
-            <ul id="contractor-list"></ul>
-        </section>
-    </main>
+    <!-- Contractors -->
+    <section id="contractors" class="tab-content">
+      <div class="section-header">
+        <h2>Contractors</h2>
+        <button onclick="exportData('contractors')">Export</button>
+      </div>
+      <form id="contractor-form">
+        <input type="text" placeholder="Contractor Name" required>
+        <input type="text" placeholder="Address" required>
+        <input type="text" placeholder="Phone Number" required>
+        <input type="text" placeholder="Service Type" required>
+        <button type="submit">Add Contractor</button>
+      </form>
+      <ul id="contractor-list"></ul>
+    </section>
+  </main>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
