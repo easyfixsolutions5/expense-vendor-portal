@@ -227,3 +227,55 @@ ul li button {
 ul li button:hover {
     background: #c0392b; /* Darker red on hover */
 }
+/* Excel-like card box */
+.card-box {
+  display: grid;
+  grid-template-columns: 150px 1fr; /* Label | Value */
+  gap: 8px 20px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fefefe;
+}
+
+.field-row {
+  display: contents; /* allow grid alignment */
+}
+
+.field-label {
+  font-weight: 600;
+  color: #2c3e50;
+  padding: 6px;
+  border-bottom: 1px solid #eee;
+  background: #f8f9fa;
+}
+
+.field-value {
+  padding: 6px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Delete button inside grid */
+.card-box .delete-btn {
+  grid-column: span 2;
+  margin-top: 10px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 13px;
+}
+
+.card-box .delete-btn:hover {
+  background: #c0392b;
+}
+
+/* Override list items to block layout */
+ul li {
+  display: block;
+  margin-bottom: 15px;
+}
+
